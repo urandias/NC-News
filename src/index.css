@@ -1,0 +1,49 @@
+header {
+    background-color: #1a202c;
+    color: #ffffff;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.menu-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5em;
+  left: 2em;
+}
+
+.menu-button:hover {
+  background-color: #cccccc;
+  cursor: pointer;
+}
+
+.article-card {
+  list-style-type: none;
+  padding: 0.5em;
+  margin: 1em auto;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+}
+
+.article-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.article-card p {
+  color: #555;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
