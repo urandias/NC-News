@@ -12,3 +12,12 @@ export function fetchArticles() {
         console.log(error)
     })
 }
+
+export function fetchArticleById(articleId) { 
+    return api.get(`/articles/${articleId}`).then(response => {
+        return response.data
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}

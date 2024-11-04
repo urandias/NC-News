@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { fetchArticles } from "../../api";
+import { Link } from "react-router-dom";
 
 const ArticleList = () => {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
         fetchArticles().then(articles => {
-            console.log(articles);
             setArticles(articles);
         });
     }, []);
@@ -31,9 +31,13 @@ const ArticleList = () => {
             <ul>
                 {articles.map((article, index) => (
                     <li key={index} className="article-card">
-                        <h3>{article.title}</h3>
-                        <img src={article.article_img_url} alt={article.title} />
-                        <p>{`From ${article.author} on ${formatDate(article.created_at)}`}</p>
+                        <Link to={`/articles/${article.article_id}`}>
+                            <button>
+                                <h3>{article.title}</h3>
+                                <img src={article.article_img_url} alt={article.title} />
+                                <p>{`From ${article.author} on ${formatDate(article.created_at)}`}</p>
+                            </button>
+                        </Link>
                     </li>
                 ))}
             </ul>
