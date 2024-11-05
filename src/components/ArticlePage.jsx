@@ -1,45 +1,31 @@
-import { useParams } from "react-router-dom";
-import { fetchArticleById } from "../../api"
-import { useState, useEffect } from "react"
+// src/components/ArticlePage.jsx
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { fetchArticleById } from '../../api';
+import { formatDate } from '../utils/utils';
+import Comments from './Comments';
 
 function ArticlePage() {
-  const {articleId} = useParams()
-  const [article, setArticle] = useState({});
-  
-  const formatDate = (isoString) => {
-    const date = new Date(isoString);
-    const options = {
-        timeZone: 'Europe/London',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-    };
-    return date.toLocaleString('en-GB', options);
-  };
+    const { articleId } = useParams();
+    const [article, setArticle] = useState({});
 
-  useEffect(() => {
-    fetchArticleById(articleId).then((article) => {
-      setArticle(article);
-    });
-  }, []);
+    useEffect(() => {
+        fetchArticleById(articleId).then((article) => {
+            setArticle(article);
+        });
+    }, [articleId]);
 
-  return (
-    <>
-    <div className="article">
-      <h1>{article.title}</h1>
-      <p>{article.author}</p>
-      <p>{formatDate(article.created_at)}</p>
-      <p>{article.topic}</p>
-      <p>{article.body}</p>
-      <p>{article.votes}</p>
-    </div>
-    </>
-  )
+    return (
+        <div className="article">
+            <h1>{article.title}</h1>
+            <p>{article.author}</p>
+            <p>{formatDate(article.created_at)}</p>
+            <p>{article.topic}</p>
+            <p>{article.body}</p>
+            <p>Votes: {article.votes}</p>
+            <Comments articleId={articleId} />
+        </div>
+    );
 }
 
-export default ArticlePage
-
+export default ArticlePage;

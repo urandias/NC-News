@@ -1,24 +1,28 @@
-import CommentCard from './CommentCard.jsx'
 import { useState, useEffect } from "react";
+import CommentCard from './CommentCard';
 import { fetchCommentsByArticleId } from "../../api";
-import { useParams } from "react-router-dom";
 
-export default function Comments() {
-    const { articleId } = useParams();
+export default function Comments({ articleId }) {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        fetchCommentsByArticleId(articleId).then(comments => {
-            setComments(comments);
-        });
-    }, []);
+        if (articleId) {
+            fetchCommentsByArticleId(articleId).then((comments) => {
+                setComments(comments);
+            });
+        }
+    }, [articleId]);
 
     return (
-        <>
+        <div className="comments-section">
             <h2>Comments</h2>
-            {comments.map((comment, index) => (
-                <CommentCard key={index} comment={comment} />
-            ))}
-        </>
-    )    
+            {comments.length > 0 ? (
+                comments.map((comment) => (
+                    <CommentCard key={comment.comment_id} comment={comment} />
+                ))
+            ) : (
+                <p>No comments yet. Be the first to comment!</p>
+            )}
+        </div>
+    );
 }
