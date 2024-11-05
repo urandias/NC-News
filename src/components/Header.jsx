@@ -23,15 +23,15 @@ const Header = () => {
         </svg>
       </button>
       {openMenu && (
-        <ul className="menu">
+        <ul className="drop-menu">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={() => setOpenMenu(false)}>Home</Link>
           </li>
           <li>
-            <Link to="/topics">Topics</Link>
+            <Link to="/topics" onClick={() => setOpenMenu(false)}>Topics</Link>
           </li>
           <li>
-            <Link to="/account">Account</Link>
+            <Link to="/account" onClick={() => setOpenMenu(false)}>Account</Link>
           </li>
         </ul>
       )}
