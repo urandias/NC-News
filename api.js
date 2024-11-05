@@ -22,9 +22,10 @@ export function fetchArticleById(articleId) {
     })
 }
 
-export function fetchCommentById(commentId) {
-    return api.get(`/comments/${commentId}`).then(response => {
-        return response.data
+export function fetchCommentsByArticleId(articleId) {
+    return api.get(`/articles/${articleId}/comments`).then(response => {
+        console.log(response.data, '<<<<<<<')
+        return response.data.comments
     })
     .catch(error => {
         console.log(error)

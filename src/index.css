@@ -79,3 +79,13 @@ header {
 h1 {
   text-align: center;
 }
+
+.comments-section {
+  padding: 1em 0;
+}
+
+.comment-card {
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1em;
+}
