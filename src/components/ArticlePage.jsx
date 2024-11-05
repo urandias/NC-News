@@ -24,15 +24,13 @@ function ArticlePage() {
   useEffect(() => {
     fetchArticleById(articleId).then((article) => {
       setArticle(article);
-      console.log(article)
     });
   }, []);
 
   return (
     <>
-    <div>
-      <h1>Article Page</h1>
-      <h2>{article.title}</h2>
+    <div className="article">
+      <h1>{article.title}</h1>
       <p>{article.author}</p>
       <p>{formatDate(article.created_at)}</p>
       <p>{article.topic}</p>

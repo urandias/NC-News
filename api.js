@@ -21,3 +21,12 @@ export function fetchArticleById(articleId) {
         console.log(error)
     })
 }
+
+export function fetchCommentById(commentId) {
+    return api.get(`/comments/${commentId}`).then(response => {
+        return response.data
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}
