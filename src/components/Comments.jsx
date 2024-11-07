@@ -4,14 +4,33 @@ import { fetchCommentsByArticleId } from "../../api";
 
 export default function Comments({ articleId }) {
     const [comments, setComments] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (articleId) {
-            fetchCommentsByArticleId(articleId).then((comments) => {
+            setLoading(true)
+            fetchCommentsByArticleId(articleId)
+            .then((comments) => {
                 setComments(comments);
-            });
+                setError(null)
+                setLoading(false)
+            })
+            .catch((err) => {
+                console.log(err)
+                setError('Failed to load coments. Please try again later.')
+                setLoading(false)
+            })
         }
     }, [articleId]);
+
+    if (loading) {
+        return <p>Loading comments...</p>
+    }
+
+    if (error) {
+        return <p>{error}</p>
+    }
 
     return (
         <div className="comments-section">
