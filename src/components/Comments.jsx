@@ -16,7 +16,7 @@ export default function Comments({ articleId }) {
     return (
         <div className="comments-section">
             <h2>Comments</h2>
-            {comments.length > 0 ? (
+            {comments && comments.length > 0 ? (
                 comments.map((comment) => (
                     <CommentCard key={comment.comment_id} comment={comment} />
                 ))
