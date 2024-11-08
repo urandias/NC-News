@@ -22,6 +22,7 @@ function ArticlePage() {
             setLoading(false)
         })
         .catch((err) => {
+          console.log(err.message, '<<<<,')
           setError(err.message)
           setLoading(false)
         })
