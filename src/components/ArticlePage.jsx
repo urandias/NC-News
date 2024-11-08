@@ -1,4 +1,3 @@
-// src/components/ArticlePage.jsx
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchArticleById } from '../../api';
